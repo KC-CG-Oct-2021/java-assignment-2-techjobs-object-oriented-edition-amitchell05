@@ -83,9 +83,9 @@ public class JobTest {
                         "Employer: %s\n" +
                         "Location: %s\n" +
                         "Position Type: %s\n" +
-                        "Core Competency: %s\n",
+                        "Core Competency: Data not available\n",
                 jobFive.getId(), jobFive.getName(), jobFive.getEmployer(), jobFive.getLocation(),
-                jobFive.getPositionType(), "Data not available");
+                jobFive.getPositionType());
         assertEquals(expected, jobFive.toString());
     }
 
