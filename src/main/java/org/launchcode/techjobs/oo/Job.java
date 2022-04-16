@@ -40,6 +40,72 @@ public class Job {
         return Objects.hash(id);
     }
 
+    @Override
+    public String toString() {
+        String defaultMessage = "Data not available";
+
+        try {
+            if (name.equals("")) {
+                name = defaultMessage;
+            }
+        } catch(NullPointerException error) {
+            name = defaultMessage;
+        }
+
+        try {
+            if (employer.getValue().equals("") || employer.getValue() == null){
+                employer.setValue(defaultMessage);
+            }
+        } catch(NullPointerException error) {
+            employer.setValue(defaultMessage);
+        }
+
+        try {
+            if (location.getValue().equals("") || location.getValue() == null){
+                location.setValue(defaultMessage);
+            }
+        }  catch(NullPointerException error) {
+            location.setValue(defaultMessage);
+        }
+
+        try {
+            if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null){
+                coreCompetency.setValue(defaultMessage);
+            }
+        } catch(NullPointerException error) {
+            coreCompetency.setValue(defaultMessage);
+        }
+
+        try {
+            if (positionType.getValue().equals("") || positionType.getValue() == null){
+                positionType.setValue(defaultMessage);
+            }
+        } catch(NullPointerException error) {
+            positionType.setValue(defaultMessage);
+        }
+
+        if (name.equals(defaultMessage)
+                && (employer.getValue().equals(defaultMessage))
+                && (location.getValue().equals(defaultMessage))
+                && (positionType.getValue().equals(defaultMessage))
+                && (coreCompetency.getValue().equals(defaultMessage))) {
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        return String.format("\nID: %d\n" +
+                        "Name: %s\n" +
+                        "Employer: %s\n" +
+                        "Location: %s\n" +
+                        "Position Type: %s\n" +
+                        "Core Competency: %s\n",
+                id,
+                name,
+                employer,
+                location,
+                positionType,
+                coreCompetency);
+    }
+
     public int getId() { return id; }
 
     public String getName() {
