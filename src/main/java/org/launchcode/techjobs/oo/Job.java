@@ -44,43 +44,23 @@ public class Job {
     public String toString() {
         String defaultMessage = "Data not available";
 
-        try {
-            if (name.equals("")) {
-                name = defaultMessage;
-            }
-        } catch(NullPointerException error) {
+        if (name.equals("")) {
             name = defaultMessage;
         }
 
-        try {
-            if (employer.getValue().equals("") || employer.getValue() == null){
-                employer.setValue(defaultMessage);
-            }
-        } catch(NullPointerException error) {
+        if (employer.getValue().equals("") || employer.getValue() == null){
             employer.setValue(defaultMessage);
         }
 
-        try {
-            if (location.getValue().equals("") || location.getValue() == null){
-                location.setValue(defaultMessage);
-            }
-        }  catch(NullPointerException error) {
+        if (location.getValue().equals("") || location.getValue() == null){
             location.setValue(defaultMessage);
         }
 
-        try {
-            if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null){
-                coreCompetency.setValue(defaultMessage);
-            }
-        } catch(NullPointerException error) {
+        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null){
             coreCompetency.setValue(defaultMessage);
         }
 
-        try {
-            if (positionType.getValue().equals("") || positionType.getValue() == null){
-                positionType.setValue(defaultMessage);
-            }
-        } catch(NullPointerException error) {
+        if (positionType.getValue().equals("") || positionType.getValue() == null){
             positionType.setValue(defaultMessage);
         }
 
