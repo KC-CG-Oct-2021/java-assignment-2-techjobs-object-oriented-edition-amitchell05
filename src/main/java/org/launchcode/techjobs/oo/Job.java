@@ -13,56 +13,24 @@ public class Job {
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
-    // Initialize a unique ID.
     public Job() {
         id = nextId;
         nextId++;
     }
 
-    // Initialize the id and value fields.
-    public Job(String aName, Employer anEmployer, Location aLocation, PositionType aPositionType, CoreCompetency aCoreCompetency) {
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
-        name = aName;
-        employer = anEmployer;
-        location = aLocation;
-        positionType = aPositionType;
-        coreCompetency = aCoreCompetency;
+        this.name = name;
+        this.employer = employer;
+        this.location = location;
+        this.positionType = positionType;
+        this.coreCompetency = coreCompetency;
     }
 
-    // Custom toString method.
-    @Override
-    public String toString(){
-        String output = "";
-        if (name.equals("")){
-            name = "Data not available";
-        }
-        if (employer.getValue().equals("") || employer.getValue() == null){
-            employer.setValue("Data not available");
-        }
-        if (location.getValue().equals("") || location.getValue() == null){
-            location.setValue("Data not available");
-        }
-        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null){
-            coreCompetency.setValue("Data not available");
-        }
-        if (positionType.getValue().equals("") || positionType.getValue() == null){
-            positionType.setValue("Data not available");
-        }
-
-        output = String.format("\nID: %d\n" +
-                "Name: %s\n" +
-                "Employer: %s\n" +
-                "Location: %s\n" +
-                "Position Type: %s\n" +
-                "Core Competency: %s\n", id, name, employer, location, positionType, coreCompetency);
-        return output;
-    }
-
-    // Custom equals and hashCode methods. Two Job objects are "equal" when their id fields match.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Job)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
         return id == job.id;
     }
@@ -72,12 +40,53 @@ public class Job {
         return Objects.hash(id);
     }
 
+    @Override
+    public String toString() {
+        String defaultMessage = "Data not available";
 
-    // Getters and setters.
+        if (name.equals("")) {
+            name = defaultMessage;
+        }
 
-    public int getId() {
-        return id;
+        if (employer.getValue().equals("") || employer.getValue() == null){
+            employer.setValue(defaultMessage);
+        }
+
+        if (location.getValue().equals("") || location.getValue() == null){
+            location.setValue(defaultMessage);
+        }
+
+        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null){
+            coreCompetency.setValue(defaultMessage);
+        }
+
+        if (positionType.getValue().equals("") || positionType.getValue() == null){
+            positionType.setValue(defaultMessage);
+        }
+
+        if (name.equals(defaultMessage)
+                && (employer.getValue().equals(defaultMessage))
+                && (location.getValue().equals(defaultMessage))
+                && (positionType.getValue().equals(defaultMessage))
+                && (coreCompetency.getValue().equals(defaultMessage))) {
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        return String.format("\nID: %d\n" +
+                        "Name: %s\n" +
+                        "Employer: %s\n" +
+                        "Location: %s\n" +
+                        "Position Type: %s\n" +
+                        "Core Competency: %s\n",
+                id,
+                name,
+                employer,
+                location,
+                positionType,
+                coreCompetency);
     }
+
+    public int getId() { return id; }
 
     public String getName() {
         return name;
