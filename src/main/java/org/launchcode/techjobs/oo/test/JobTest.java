@@ -58,13 +58,13 @@ public class JobTest {
     }
 
     @Test
-    public void testBlankLinesInToString() {
+    public void testToStringStartsAndEndsWithNewLine() {
         assertEquals('\n', jobThree.toString().charAt(0));
         assertEquals('\n', jobThree.toString().charAt(jobThree.toString().length() - 1));
     }
 
     @Test
-    public void testToStringPrintsJobInformation() {
+    public void testToStringContainsCorrectLabelsAndData() {
         String expected = String.format("\nID: %d\n" +
                         "Name: %s\n" +
                         "Employer: %s\n" +
@@ -77,7 +77,7 @@ public class JobTest {
     }
 
     @Test
-    public void testOutputIfFieldEmpty() {
+    public void testToStringHandlesEmptyField() {
         String expected = String.format("\nID: %d\n" +
                         "Name: %s\n" +
                         "Employer: %s\n" +
