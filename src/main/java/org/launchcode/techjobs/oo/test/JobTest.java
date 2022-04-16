@@ -7,7 +7,6 @@ import org.junit.runners.JUnit4;
 import org.launchcode.techjobs.oo.*;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
 
 /**
  * Created by LaunchCode

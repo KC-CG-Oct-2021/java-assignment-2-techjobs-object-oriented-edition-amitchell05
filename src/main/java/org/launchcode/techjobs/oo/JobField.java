@@ -8,7 +8,7 @@ public abstract class JobField {
     private String value;
 
     public JobField() {
-        this.id = nextId;
+        id = nextId;
         nextId++;
     }
 
@@ -32,7 +32,7 @@ public abstract class JobField {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
     }
 
     public int getId() { return id; }
