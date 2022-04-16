@@ -10,12 +10,14 @@ public class JobTest {
     Job jobOne;
     Job jobTwo;
     Job jobThree;
+    Job jobFour;
 
     @Before
     public void createJobObject() {
         jobOne = new Job();
         jobTwo = new Job();
         jobThree = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        jobFour = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     }
 
     @Test
@@ -39,5 +41,10 @@ public class JobTest {
 
         assertTrue(jobThree.getPositionType() instanceof PositionType);
         assertEquals(jobThree.getPositionType().getValue(), "Quality control");
+    }
+
+    @Test
+    public void testJobsForEquality() {
+        assertFalse(jobThree.equals(jobFour));
     }
 }
