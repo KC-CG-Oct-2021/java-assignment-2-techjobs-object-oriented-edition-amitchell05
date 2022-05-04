@@ -43,47 +43,46 @@ public class Job {
     @Override
     public String toString() {
         String defaultMessage = "Data not available";
+        String output = "";
 
-        if (name.equals("")) {
-            name = defaultMessage;
+        if (name == null) {
+            output = "OOPS! This job does not seem to exist.";
+        } else {
+            if (name.equals("")) {
+                name = defaultMessage;
+            }
+
+            if (employer.getValue().equals("") || employer.getValue() == null){
+                employer.setValue(defaultMessage);
+            }
+
+            if (location.getValue().equals("") || location.getValue() == null){
+                location.setValue(defaultMessage);
+            }
+
+            if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null){
+                coreCompetency.setValue(defaultMessage);
+            }
+
+            if (positionType.getValue().equals("") || positionType.getValue() == null){
+                positionType.setValue(defaultMessage);
+            }
+
+            output = String.format("\nID: %d\n" +
+                            "Name: %s\n" +
+                            "Employer: %s\n" +
+                            "Location: %s\n" +
+                            "Position Type: %s\n" +
+                            "Core Competency: %s\n",
+                    id,
+                    name,
+                    employer,
+                    location,
+                    positionType,
+                    coreCompetency);
         }
 
-        if (employer.getValue().equals("") || employer.getValue() == null){
-            employer.setValue(defaultMessage);
-        }
-
-        if (location.getValue().equals("") || location.getValue() == null){
-            location.setValue(defaultMessage);
-        }
-
-        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null){
-            coreCompetency.setValue(defaultMessage);
-        }
-
-        if (positionType.getValue().equals("") || positionType.getValue() == null){
-            positionType.setValue(defaultMessage);
-        }
-
-        if (name.equals(defaultMessage)
-                && (employer.getValue().equals(defaultMessage))
-                && (location.getValue().equals(defaultMessage))
-                && (positionType.getValue().equals(defaultMessage))
-                && (coreCompetency.getValue().equals(defaultMessage))) {
-            return "OOPS! This job does not seem to exist.";
-        }
-
-        return String.format("\nID: %d\n" +
-                        "Name: %s\n" +
-                        "Employer: %s\n" +
-                        "Location: %s\n" +
-                        "Position Type: %s\n" +
-                        "Core Competency: %s\n",
-                id,
-                name,
-                employer,
-                location,
-                positionType,
-                coreCompetency);
+        return output;
     }
 
     public int getId() { return id; }

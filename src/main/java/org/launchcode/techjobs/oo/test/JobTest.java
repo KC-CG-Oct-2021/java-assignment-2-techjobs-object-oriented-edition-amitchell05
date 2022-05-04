@@ -85,11 +85,11 @@ public class JobTest {
         assertEquals(expected, jobFive.toString());
     }
 
-//    @Test
-//    public void testJobContainsIdOnly() {
-//        Job jobOne = new Job();
-//        String expected = "OOPS! This job does not seem to exist.";
-//
-//        assertEquals(expected, jobOne.toString());
-//    }
+    @Test
+    public void testJobContainsIdOnly() {
+        Job jobOne = new Job();
+        String expected = "OOPS! This job does not seem to exist.";
+
+        assertEquals(expected, jobOne.toString());
+    }
 }
